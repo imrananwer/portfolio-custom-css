@@ -7,7 +7,7 @@ const Hero = () => {
     <div
   id="hero"
   className=" min-h-screen bg-no-repeat bg-[url(/banner_bg.png)] bg-cover"
-  style={{ backgroundSize: "25%", backgroundPosition: "left 100px top 100px"}} 
+  style={{ backgroundSize: "20%", backgroundPosition: "left 100px top 100px"}} 
 >
 
       <Navbar />
@@ -17,7 +17,7 @@ const Hero = () => {
         {/* Changes: Adjusted text size and centering */}
         <div className="text-[70px] sm:text-[100px] font-bold leading-tight flex justify-center items-center text-white">
           <div>
-            <p data-aos="zoom-in-up">I' am</p>
+            <p data-aos="zoom-in-up">I am</p>
             <p data-aos="zoom-in-up">Imran</p>
             <p data-aos="zoom-in-up">Anwer</p>
           </div>
