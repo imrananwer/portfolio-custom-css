@@ -1,115 +1,95 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import '../app/styles/contact.css';
 
 const Contact = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = event.target;
+    setFormData({
+      ...formData,
+      [id]: value
+    });
+  };
 
-    const name = (document.getElementById("name") as HTMLInputElement).value;
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const message = (document.getElementById("msg") as HTMLTextAreaElement).value;
-
-    if (!name || !email || !message) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      alert("Please enter a valid email.");
-      return;
-    }
-
-    alert("Message sent successfully!");
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();  // To prevent the default form submission
+    // Add form data processing logic here (backend or email sending)
+    console.log(formData);
   };
 
   return (
-    <div id="contact" className="pt-32 container">
-      <div className="grid md:grid-cols-2 gap-10 md:gap-6">
-        {/* Left side: Contact Info */}
-        <div className="space-y-8">
-          <h2 className="text-5xl" data-aos="zoom-in-up">
-            Get in touch
-          </h2>
-          <p className="text-gray-300 text-[18px] pt-2" data-aos="zoom-in-up">
-            Drop me a line, give me a call, or send me a message by submitting
-            the form.
-          </p>
+    <form onSubmit={handleSubmit}>
+      <div id="contact" className="contact-container">
+        <div className="contact-grid md:grid-cols-2">
+          {/* Contact Info Section */}
+          <div className="contact-space">
+            <h2 className="contact-heading" data-aos="zoom-in-up">
+              Get in touch
+            </h2>
+            <p className="contact-text" data-aos="zoom-in-up">
+              Drop me a line, give me a call, or send me a message by submitting the form.
+            </p>
 
-          <div className="flex gap-3 items-center text-cream" data-aos="zoom-in-up">
-            <AiOutlineMail size={30} />
-            <a href="mailto:xyz@gmail.com" className="hover:underline">
-              xyz@gmail.com
-            </a>
+            <div className="contact-flex" data-aos="zoom-in-up">
+              <AiOutlineMail size={30} /> 
+              <a href="mailto:xyz@gmail.com">xyz@gmail.com</a>
+            </div>
+            <div className="contact-flex" data-aos="zoom-in-up">
+              <BsTelephone size={30} /> 
+              <a href="tel:+02100000000">(021) 000-0000</a>
+            </div>
           </div>
-          <div className="flex gap-3 items-center text-cream" data-aos="zoom-in-up">
-            <BsTelephone size={30} />
-            <a href="tel:+920210000000" className="hover:underline">
-              +92 (021) 000-0000
-            </a>
-          </div>
-        </div>
 
-        {/* Right side: Contact Form */}
-        <div className="space-y-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex flex-col gap-1" data-aos="zoom-in-up">
-              <label htmlFor="name" className="text-cream">
-                Name
-              </label>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className="h-[40px] bg-cream text-black border border-ruby focus:ring focus:ring-ruby focus:outline-none"
-                id="name"
-                aria-label="Your name"
-                required
+          {/* Contact Form Section */}
+          <div className="contact-space">
+            <div className="form" data-aos="zoom-in-up">
+              <label htmlFor="name">Name</label>
+              <input 
+                type="text" 
+                className="input-field" 
+                id="name" 
+                value={formData.name} 
+                onChange={handleChange} 
+                required 
               />
             </div>
-            <div className="flex flex-col gap-1" data-aos="zoom-in-up">
-              <label htmlFor="email" className="text-cream">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="h-[40px] bg-cream text-black border border-ruby focus:ring focus:ring-ruby focus:outline-none"
-                id="email"
-                aria-label="Your email"
-                required
+            <div className="form" data-aos="zoom-in-up">
+              <label htmlFor="email">Email</label>
+              <input 
+                type="email" 
+                className="input-field" 
+                id="email" 
+                value={formData.email} 
+                onChange={handleChange} 
+                required 
               />
             </div>
-            <div className="flex flex-col gap-1" data-aos="zoom-in-up">
-              <label htmlFor="msg" className="text-cream">
-                Message
-              </label>
-              <textarea
-                placeholder="Write your message"
-                className="bg-cream text-black border border-ruby min-h-[100px] resize-none focus:ring focus:ring-ruby focus:outline-none"
-                id="msg"
-                aria-label="Your message"
-                rows={8}
-                required
+            <div className="form" data-aos="zoom-in-up">
+              <label htmlFor="msg">Message</label>
+              <textarea 
+                className="textarea-field" 
+                id="msg" 
+                rows={8} 
+                value={formData.message} 
+                onChange={handleChange} 
+                required 
               ></textarea>
             </div>
 
-            <button
-              type="submit"
-              className="bg-ruby text-cream p-2 px-6 hover:bg-dark-ruby transition duration-300"
-              data-aos="zoom-in-up"
-            >
+            <button className="button" data-aos="zoom-in-up" type="submit">
               Send
             </button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

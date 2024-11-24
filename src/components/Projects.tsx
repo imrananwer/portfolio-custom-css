@@ -1,6 +1,7 @@
 import React from "react";
 import Heading from "./Heading";
 import Card from "./Card";
+import '../app/styles/projects.css';
 
 const data = [
   {
@@ -33,7 +34,7 @@ const data = [
   },
   {
     id: 4,
-    title: "static Interactive Resume",
+    title: "Static Interactive Resume",
     desc: "A TypeScript-based interactive resume built with HTML and CSS, allowing users to showcase their skills dynamically.",
     img: "/project_05.jpg",
     tags: ["HTML", "Node", "CSS", "Typescript"],
@@ -49,9 +50,9 @@ const data = [
 
 const Projects = () => {
   return (
-    <div id="projects" className="container pt-32">
+    <div id="projects" className="projects-container">
       <Heading title="My Projects" />
-      <div className="grid gap-10 xl:gap-0 xl:gap-y-10 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+      <div className="projects-grid projects-grid-xl projects-grid-md-2 projects-grid-lg-3 projects-center">
         {data.map((el) => (
           <Card
             key={el.id}

@@ -1,50 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  body {
-    color: #f7c8b1; /* Cream */
-    background-color: #9b111e; /* Ruby Red */
-  }
-}
-
-
-@layer components {
-  .menuLink {
-    @apply cursor-pointer hover:text-[#c5c5c5];
-  }
-
-  .tags {
-    background-color: #0abde3;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    padding: 3px 10px;
-    display: inline-block;
+body {
     color: #fff;
-    font-size: 12px;
+    background-color: #000;
+    margin: 0;
   }
 
-  .tags:last-child {
-    margin-right: 0;
-  }
-
-  .tags:nth-child(2) {
-    background-color: #a55eea;
-  }
-  .tags:nth-child(3) {
-    background-color: #20bf6b;
-  }
-  .tags:nth-child(4) {
-    background-color: #eb4d4b;
-  }
-  .tags:nth-child(5) {
-    background-color: #10ac84;
-  }
-  .tags:nth-child(6) {
-    background-color: #5352ed;
-  }
-  .tags:nth-child(7) {
-    background-color: #db9f1e;
-  }
+  *{
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
 }
